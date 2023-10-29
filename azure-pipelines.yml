@@ -27,6 +27,11 @@ steps:
     packageType: 'sdk'
     useGlobalJson: true
   displayName: "Install .Net"
+- task: NuGetToolInstaller@1
+  displayName: Install NuGet
+  inputs:
+   versionSpec: 6.7.0
+    
 - task: gitversion/setup@0
   displayName: Setup GitVersion
   inputs:
@@ -45,6 +50,14 @@ steps:
     packagesToPack: 'Turing Pi 2 Client.sln'
     nobuild: true
     versioningScheme: 'off'
-    buildProperties: '-c Release'
+    buildProperties: 'Configuration=Release'
+    verbosityPack: 'Minimal'
   displayName: "Create NuGet packages"
-    
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'NuGet (Turing Pi Client)'
+    verbosityPush: 'Normal'
+  displayName: "Publish packages"

@@ -1,0 +1,9 @@
+assembly-versioning-scheme: MajorMinorPatch
+commit-message-incrementing: Enabled
+mode: ContinuousDelivery
+next-version: 0.0.0
+branches:
+  develop:
+    increment: Patch
+    
+merge-message-formats: {}

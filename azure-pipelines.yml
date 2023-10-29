@@ -27,6 +27,11 @@ steps:
     packageType: 'sdk'
     useGlobalJson: true
   displayName: "Install .Net"
+- task: NuGetToolInstaller@1
+  displayName: Install NuGet
+  inputs:
+   versionSpec: 6.7.0
+    
 - task: gitversion/setup@0
   displayName: Setup GitVersion
   inputs:

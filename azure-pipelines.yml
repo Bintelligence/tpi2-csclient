@@ -18,6 +18,10 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- checkout: self
+  fetchDepth: 0
+  displayName: "Git Checkout"
+  persistCredentials: true
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
@@ -25,6 +29,19 @@ steps:
 - task: gitversion/setup@0
   displayName: Setup GitVersion
   inputs:
-  versionSpec: '5.12.0'
+    versionSpec: '5.12.0'
 - task: gitversion/execute@0
   displayName: Run GitVersion
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: 'Turing Pi 2 Client.sln'
+    arguments: '-c Release'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    packagesToPack: 'Turing Pi 2 Client.sln'
+    nobuild: true
+    versioningScheme: 'off'
+    buildProperties: '-c Release'
+    

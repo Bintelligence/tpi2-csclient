@@ -116,16 +116,16 @@ namespace TuringPi2.Client
 
         public async Task ResetNetworkAsync(CancellationToken cancellationToken = default)
         {
-            var path = new StringBuilder(BuildUrl(OperationGet, OperationTypeNetwork))
+            var path = new StringBuilder(BuildUrl(OperationSet, OperationTypeNetwork))
                 .Append("&cmd=reset");
 
             var response = await httpClient.PostAsync(path.ToString(), new ByteArrayContent(new byte[0]), cancellationToken);
             response.EnsureSuccessStatusCode();
         }
 
-        public async Task SetUSB(USB usb, CancellationToken cancellationToken = default)
+        public async Task SetUSBAsync(USB usb, CancellationToken cancellationToken = default)
         {
-            var path = BuildUrl(OperationSet, OperationTypeFirmware, usb);
+            var path = BuildUrl(OperationSet, OperationTypeUSB, usb);
 
             var response = await httpClient.PostAsync(path.ToString(), new ByteArrayContent(new byte[0]), cancellationToken);
             response.EnsureSuccessStatusCode();
@@ -176,8 +176,8 @@ namespace TuringPi2.Client
             StringBuilder sb = new StringBuilder(BuildUrl(operation, operationType))
                 .Append("&mode=")
                 .Append((int)usb.Mode)
-                .Append("&node")
-                .Append(NodeNames.Index(usb.NodeName) - 1);
+                .Append("&node=")
+                .Append(NodeNames.Index(usb.NodeName));
 
             return sb.ToString();
         }

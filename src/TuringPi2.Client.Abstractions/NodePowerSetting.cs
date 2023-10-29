@@ -19,7 +19,7 @@ namespace TuringPi2.Client
                 throw new ArgumentException($"{nameof(nodeName)} contains an invalid value.");
             }
 
-            if (!Enum.IsDefined(typeof(NodePowerSetting), powerSetting))
+            if (!Enum.IsDefined(typeof(PowerSetting), powerSetting))
             {
                 throw new ArgumentException($"{nameof(powerSetting)} contains an invalid value.");
             }

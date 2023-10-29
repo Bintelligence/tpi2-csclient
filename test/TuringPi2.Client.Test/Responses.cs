@@ -18,6 +18,10 @@ namespace TuringPi2.Client.Test
 
         public static string USB() => GetResourceContent("usbmode.json");
 
+        public static string SDCard() => GetResourceContent("sdcard.json");
+
+        public static string OK() => GetResourceContent("ok.json");
+
         private static string GetResourceContent(string name)
         {
             using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"TuringPi2.Client.Test.Responses.{name}");

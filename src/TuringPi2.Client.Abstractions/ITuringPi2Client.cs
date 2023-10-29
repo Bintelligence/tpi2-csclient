@@ -30,7 +30,7 @@ namespace TuringPi2.Client
         Task<USB> GetUSBAsync(CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// 
+        /// Gets the status of the BMC SD Card.
         /// </summary>
         /// <returns></returns>
         Task<SDCard> GetSDCardAsync(CancellationToken cancellationToken = default);
@@ -62,6 +62,6 @@ namespace TuringPi2.Client
         /// </summary>
         /// <param name="usb">the desired USB state.</param>
         /// <returns></returns>
-        Task SetUSB(USB usb, CancellationToken cancellationToken = default);
+        Task SetUSBAsync(USB usb, CancellationToken cancellationToken = default);
     }
 }

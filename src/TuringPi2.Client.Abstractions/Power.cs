@@ -3,6 +3,9 @@
 
 namespace TuringPi2.Client
 {
+    using System;
+    using System.Collections.Generic;
+
     public class Power
     {
         public Power()

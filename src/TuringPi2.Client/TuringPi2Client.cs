@@ -4,6 +4,10 @@
 namespace TuringPI2.Client
 {
     using Microsoft.Extensions.Options;
+    using System;
+    using System.IO;
+    using System.Linq;
+    using System.Net.Http;
     using System.Text;
     using System.Text.Json.Nodes;
     using System.Threading;

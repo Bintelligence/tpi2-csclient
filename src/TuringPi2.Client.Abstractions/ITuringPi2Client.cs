@@ -3,6 +3,9 @@
 
 namespace TuringPi2.Client
 {
+    using System.Threading;
+    using System.Threading.Tasks;
+
     /// <summary>
     /// Represents the Turing Pi 2 Client.
     /// </summary>

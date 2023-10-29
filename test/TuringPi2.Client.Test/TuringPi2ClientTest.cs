@@ -3,12 +3,16 @@
 
 namespace TuringPi2.Client.Test
 {
-    public class UnitTest1
+    public class TuringPi2ClientTest : ClientTest
     {
-        [Fact]
-        public void Test1()
+        public TuringPi2ClientTest()
         {
+        }
 
+        [Fact]
+        public async Task GetNodeInfoAsync()
+        {
+            
         }
     }
 }

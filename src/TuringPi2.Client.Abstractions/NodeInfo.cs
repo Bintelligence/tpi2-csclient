@@ -3,6 +3,8 @@
 
 namespace TuringPi2.Client
 {
+    using System.Collections.Generic;
+
     public class NodeInfo
     {
         public NodeInfo()

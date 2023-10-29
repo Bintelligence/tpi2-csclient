@@ -1,13 +1,14 @@
 ﻿// Copyright (C) 2023 Bintelligence - The Netherlands.
 // Licensed under the MIT license, see LICENSE.TXT for details.
 
-namespace TuringPI2.Client
+namespace TuringPi2.Client
 {
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.DependencyInjection.Extensions;
     using Microsoft.Extensions.Options;
-    using TuringPi2.Client;
+    using System.ComponentModel;
 
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddTuringPi2Client(this IServiceCollection services)

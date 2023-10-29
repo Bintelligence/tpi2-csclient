@@ -4,14 +4,60 @@
 # https://aka.ms/yaml
 
 trigger:
-- main
+  branches:
+    include:
+    - main
+    - release/*
+    - development
+    - support/*
+    - hotfix/*
+    exclude:
+    - regs/tags/*
 
 pool:
   vmImage: ubuntu-latest
 
 steps:
-
+- checkout: self
+  fetchDepth: 0
+  displayName: "Git Checkout"
+  persistCredentials: true
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
     useGlobalJson: true
+  displayName: "Install .Net"
+- task: NuGetToolInstaller@1
+  displayName: Install NuGet
+  inputs:
+   versionSpec: 6.7.0
+    
+- task: gitversion/setup@0
+  displayName: Setup GitVersion
+  inputs:
+    versionSpec: '5.12.0'
+- task: gitversion/execute@0
+  displayName: Run GitVersion
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: 'Turing Pi 2 Client.sln'
+    arguments: '-c Release'
+  displayName: "Build the client"
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    packagesToPack: 'Turing Pi 2 Client.sln'
+    nobuild: true
+    versioningScheme: 'off'
+    buildProperties: 'Configuration=Release'
+    verbosityPack: 'Minimal'
+  displayName: "Create NuGet packages"
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'NuGet (Turing Pi Client)'
+    verbosityPush: 'Normal'
+  displayName: "Publish packages"

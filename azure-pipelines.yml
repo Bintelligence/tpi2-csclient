@@ -61,3 +61,10 @@ steps:
     publishFeedCredentials: 'NuGet (Turing Pi Client)'
     verbosityPush: 'Normal'
   displayName: "Publish packages"
+- script: |
+    git config --global user.name "Azure DevOps Build"
+    git config --global user.email "beheer@bintelligence.nl"
+    git tag -a $(GitVersion.SemVer) ^
+      -m "Version: $(GitVersion.SemVer) ($(GitVersion.InformationalVersion))" ^
+      -m "Branch/ID: $(Build.SourceBranch) / $(Build.BuildId)"
+    git push origin $(GitVersion.SemVer)

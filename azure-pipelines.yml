@@ -44,3 +44,4 @@ steps:
     nobuild: true
     versioningScheme: 'off'
     buildProperties: '-c Release'
+    

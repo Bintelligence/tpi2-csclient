@@ -45,6 +45,6 @@ steps:
     packagesToPack: 'Turing Pi 2 Client.sln'
     nobuild: true
     versioningScheme: 'off'
-    buildProperties: '-c Release'
+    buildProperties: '-c Release --version-suffix $(GitVersion.NuGetVersionV2)'
   displayName: "Create NuGet packages"
     

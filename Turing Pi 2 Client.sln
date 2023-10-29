@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9671F4BB-8067-4D12-B449-811C2B1DEE64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuringPi2.Client.Abstractions", "src\TuringPi2.Client.Abstractions\TuringPi2.Client.Abstractions.csproj", "{4DE66C0E-1EA4-43D9-A4D9-CFF3F28942C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuringPi2.Client", "src\TuringPI2.Client\TuringPi2.Client.csproj", "{F1CE5DD0-96DF-4371-9FA0-9C16A5E077B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{794EC1C6-7806-4167-8102-6A4070631D44}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		LICENSE.txt = LICENSE.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4DE66C0E-1EA4-43D9-A4D9-CFF3F28942C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DE66C0E-1EA4-43D9-A4D9-CFF3F28942C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DE66C0E-1EA4-43D9-A4D9-CFF3F28942C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DE66C0E-1EA4-43D9-A4D9-CFF3F28942C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1CE5DD0-96DF-4371-9FA0-9C16A5E077B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1CE5DD0-96DF-4371-9FA0-9C16A5E077B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1CE5DD0-96DF-4371-9FA0-9C16A5E077B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1CE5DD0-96DF-4371-9FA0-9C16A5E077B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4DE66C0E-1EA4-43D9-A4D9-CFF3F28942C3} = {9671F4BB-8067-4D12-B449-811C2B1DEE64}
+		{F1CE5DD0-96DF-4371-9FA0-9C16A5E077B2} = {9671F4BB-8067-4D12-B449-811C2B1DEE64}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE7B47E7-A489-4FE7-81DA-C05914768C00}
+	EndGlobalSection
+EndGlobal

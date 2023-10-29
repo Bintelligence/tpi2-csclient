@@ -64,7 +64,7 @@ steps:
 - script: |
     git config --global user.name "Azure DevOps Build"
     git config --global user.email "beheer@bintelligence.nl"
-    git tag -a $(GitVersion.SemVer) ^
-      -m "Version: $(GitVersion.SemVer) ($(GitVersion.InformationalVersion))" ^
+    git tag -a $(GitVersion.SemVer) \
+      -m "Version: $(GitVersion.SemVer) ($(GitVersion.InformationalVersion))" \
       -m "Branch/ID: $(Build.SourceBranch) / $(Build.BuildId)"
     git push origin $(GitVersion.SemVer)

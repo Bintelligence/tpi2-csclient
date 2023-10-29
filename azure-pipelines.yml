@@ -26,10 +26,12 @@ steps:
   inputs:
     packageType: 'sdk'
     useGlobalJson: true
+  displayName: "Install .Net"
 - task: gitversion/setup@0
   displayName: Setup GitVersion
   inputs:
     versionSpec: '5.12.0'
+  displayName: "Install GitVersion"
 - task: gitversion/execute@0
   displayName: Run GitVersion
 - task: DotNetCoreCLI@2
@@ -37,6 +39,7 @@ steps:
     command: 'build'
     projects: 'Turing Pi 2 Client.sln'
     arguments: '-c Release'
+  displayName: "Build the client"
 - task: DotNetCoreCLI@2
   inputs:
     command: 'pack'
@@ -44,4 +47,5 @@ steps:
     nobuild: true
     versioningScheme: 'off'
     buildProperties: '-c Release'
+  displayName: "Create NuGet packages"
     

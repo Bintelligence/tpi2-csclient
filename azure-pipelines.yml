@@ -51,4 +51,13 @@ steps:
     nobuild: true
     versioningScheme: 'off'
     buildProperties: 'Configuration=Release;VersionSuffix=$(GitVersion.NuGetVersionV2)'
+    verbosityPack: 'Minimal'
   displayName: "Create NuGet packages"
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'NuGet (Turing Pi Client)'
+    verbosityPush: 'Normal'
+  displayName: "Publish packages"

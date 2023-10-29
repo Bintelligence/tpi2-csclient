@@ -3,6 +3,22 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>TuringPi2.Client</RootNamespace>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Title>Turing Pi 2 .Net Client</Title>
+    <Description>A simple HTTP client for the BMC API of the Turing Pi 2.</Description>
+    <Copyright>Copyright (C) 2023 Bintelligence</Copyright>
+    <PackageProjectUrl>https://github.com/Bintelligence/tpi2-csclient</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/Bintelligence/tpi2-csclient</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>turing-pi</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

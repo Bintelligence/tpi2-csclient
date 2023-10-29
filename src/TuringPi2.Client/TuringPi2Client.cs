@@ -1,7 +1,7 @@
 ﻿// Copyright (C) 2023 Bintelligence - The Netherlands.
 // Licensed under the MIT license, see LICENSE.TXT for details.
 
-namespace TuringPI2.Client
+namespace TuringPi2.Client
 {
     using Microsoft.Extensions.Options;
     using System;
@@ -19,14 +19,19 @@ namespace TuringPI2.Client
     {
         private HttpClient httpClient;
 
-        internal TuringPi2Client(IHttpClientFactory httpClientFactory, IOptions<TuringPi2ClientOptions> turingPi2Options)
+        public TuringPi2Client(IHttpClientFactory httpClientFactory, IOptions<TuringPi2ClientOptions> turingPi2Options)
         {
+            if (httpClientFactory is null)
+            {
+                throw new ArgumentNullException(nameof(httpClientFactory));
+            }
+
             if (turingPi2Options is null)
             {
                 throw new ArgumentNullException(nameof(turingPi2Options));
             }
 
-            var httpClient = httpClientFactory.CreateClient();
+            httpClient = httpClientFactory.CreateClient();
             httpClient.BaseAddress = turingPi2Options.Value.Url;
         }
 
@@ -96,7 +101,7 @@ namespace TuringPI2.Client
 
         public async Task<USB> GetUSBAsync(CancellationToken cancellationToken = default)
         {
-            var path = BuildUrl(OperationGet, OperationTypeSDCard);
+            var path = BuildUrl(OperationGet, OperationTypeUSB);
             var response = await httpClient.PostAsync(path, new ByteArrayContent(new byte[0]), cancellationToken);
             response.EnsureSuccessStatusCode();
 
@@ -145,7 +150,7 @@ namespace TuringPI2.Client
                 .Append("/api/bmc")
                 .Append("?opt=")
                 .Append(operation)
-                .Append("&type")
+                .Append("&type=")
                 .Append(operationType);
 
             return sb.ToString();

@@ -53,6 +53,8 @@ namespace TuringPi2.Client.Test
         {
             try
             {
+                // This is done because XUnit uses Dispose() as a test finalizer.
+                // We can do some final checks to see if nothing is left dangling.
                 MockHandler.VerifyNoOutstandingExpectation();
                 MockHandler.VerifyNoOutstandingRequest();
             }
@@ -60,6 +62,7 @@ namespace TuringPi2.Client.Test
             {
                 if (disposing && !IsDisposed)
                 {
+                    httpClientFactory?.Dispose();
                     serviceProvider?.Dispose();
                 }
 

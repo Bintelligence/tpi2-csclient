@@ -5,5 +5,8 @@ namespace TuringPi2.Client
 {
     public class USB
     {
+        public USBMode Mode { get; set; }
+
+        public string NodeName { get; set; }
     }
 }

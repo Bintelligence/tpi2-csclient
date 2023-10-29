@@ -12,38 +12,38 @@ namespace TuringPi2.Client
         /// Gets the node info.
         /// </summary>
         /// <returns>a <see cref="NodeInfo"/> object containing information about the installed nodes.</returns>
-        Task<NodeInfo> GetNodeInfoAsync();
+        Task<NodeInfo> GetNodeInfoAsync(CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Gets the power state of all the nodes.
         /// </summary>
         /// <returns>a <see cref="Power"/> object containing the power state of each node.</returns>
-        Task<Power> GetPowerAsync();
+        Task<Power> GetPowerAsync(CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Gets the state for the USB interface.
         /// </summary>
         /// <returns>a <see cref="USB"/> object to indicate to which node the USB interface is connected and which mode it is in.</returns>
-        Task<USB> GetUsbAsync();
+        Task<USB> GetUSBAsync(CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        Task<SDCard> GetSDCardAsync();
+        Task<SDCard> GetSDCardAsync(CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Changes the power of one or more nodes.
         /// </summary>
         /// <param name="powerSetting">the power settings to apply to each node.</param>
         /// <returns>a <see cref="Task"/> representing the asynchonous operation.</returns>
-        Task ChangePowerAsync(params NodePowerSetting[] powerSetting);
+        Task ChangePowerAsync(CancellationToken cancellationToken = default, params NodePowerSetting[] powerSetting);
 
         /// <summary>
         /// Resets the network interface.
         /// </summary>
         /// <returns>a <see cref="Task"/> representing the asynchonous operation.</returns>
-        Task ResetNetworkAsync();
+        Task ResetNetworkAsync(CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Performs an OTA-update using a "SWU" file.
@@ -52,6 +52,13 @@ namespace TuringPi2.Client
         /// See the Turing Pi 2 documentation for details about updating the firmware.
         /// </remarks>
         /// <returns>a <see cref="Task"/> representing the asynchonous operation.</returns>
-        Task UpdateFirmwareAsync(string filePath);
+        Task UpdateFirmwareAsync(string filePath, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Sets the USB interface to the specified node & type.
+        /// </summary>
+        /// <param name="usb">the desired USB state.</param>
+        /// <returns></returns>
+        Task SetUSB(USB usb, CancellationToken cancellationToken = default);
     }
 }

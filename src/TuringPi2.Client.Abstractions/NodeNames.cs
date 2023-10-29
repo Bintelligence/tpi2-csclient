@@ -5,6 +5,7 @@ namespace TuringPi2.Client
 {
     using System;
 
+    // I don't like this code, but it's quick and easy.
     public static class NodeNames
     {
         public const string Node1 = "node1";
@@ -21,11 +22,11 @@ namespace TuringPi2.Client
 
             switch (nodeName)
             {
-                case Node1: return 1;
-                case Node2: return 2;
-                case Node3: return 3;
-                case Node4: return 4;
-                default: return default;
+                case Node1: return 0;
+                case Node2: return 1;
+                case Node3: return 2;
+                case Node4: return 3;
+                default: throw new ArgumentException($"'{nameof(nodeName)}' does not contain a valid value.");
             }
         }
 
@@ -33,11 +34,11 @@ namespace TuringPi2.Client
         {
             switch (index)
             {
-                case 1: return Node1;
-                case 2: return Node2;
-                case 3: return Node3;
-                case 4: return Node4;
-                default: throw new ArgumentOutOfRangeException(nameof(index), index, $"{nameof(index)} must be between 1 and 4");
+                case 0: return Node1;
+                case 1: return Node2;
+                case 2: return Node3;
+                case 3: return Node4;
+                default: throw new ArgumentOutOfRangeException(nameof(index), index, $"{nameof(index)} must be between 0 and 3");
             }
         }
 

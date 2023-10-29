@@ -4,8 +4,6 @@
 namespace TuringPi2.Client
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     /// <summary>
     /// The settings for the Turing Pi 2 client.
